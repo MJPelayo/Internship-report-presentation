@@ -33,18 +33,64 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
 
+        .top-section {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .image-container {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .intern-image {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .intern-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        .caption {
+            font-size: 0.8rem;
+            margin-top: 8px;
+            opacity: 0.8;
+        }
+
+        .title-section {
+            flex: 2;
+        }
+
         h1 {
             font-size: 2.5rem;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
             border-left: 4px solid #A5D6A5;
             padding-left: 20px;
+        }
+
+        .subtext {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-left: 24px;
         }
 
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
-            margin: 40px 0;
+            margin-top: 20px;
         }
 
         .skill-card {
@@ -52,13 +98,11 @@
             padding: 25px;
             border-radius: 15px;
             text-align: center;
-            cursor: pointer;
             transition: transform 0.4s, box-shadow 0.4s;
-            transform-style: preserve-3d;
         }
 
         .skill-card:hover {
-            transform: translateY(-10px) rotateY(5deg);
+            transform: translateY(-10px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             background: rgba(165,214,165,0.25);
         }
@@ -73,10 +117,17 @@
             color: #C8E6A0;
         }
 
+        .skill-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
         .nav-buttons {
             margin-bottom: 20px;
             display: flex;
             justify-content: space-between;
+            width: 90%;
+            max-width: 1200px;
         }
 
         .nav-btn {
@@ -100,6 +151,44 @@
             font-size: 0.9rem;
             opacity: 0.7;
         }
+
+        /* Lightbox Modal (Zoom Effect) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #A5D6A5;
+        }
     </style>
 </head>
 <body>
@@ -107,8 +196,16 @@
         <a href="page3.html" class="nav-btn">← Previous</a>
         <a href="page5.html" class="nav-btn">Next →</a>
     </div>
+
     <div class="slide-container">
-        <h1>Key Responsibilities</h1>
+        <div class="top-section">
+           
+            <div class="title-section">
+                <h1>Key Responsibilities</h1>
+                <div class="subtext">What I did day-to-day during my 10-week internship</div>
+            </div>
+        </div>
+
         <div class="skills-grid">
             <div class="skill-card">
                 <div class="skill-icon">🖥️</div>
@@ -135,8 +232,44 @@
                 <h3>Documentation</h3>
                 <p>Recording procedures and ticket resolutions</p>
             </div>
-        </div>
-    </div>
+        
+           
+           <div class="image-container" onclick="openModal()">
+                <img src="images/intern-work.png" alt="Marlon working on IT tasks at Madisco" class="intern-image" onerror="this.style.display='none'">
+                <div class="caption">📸 Click image to zoom → Working on IT infrastructure at Madisco Headquarters</div>
+            </div>
+   
+
     <div class="page-indicator">Page 4 of 13</div>
+
+    <!-- Lightbox Modal for Zoom -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="zoomedImage">
+    </div>
+
+    <script>
+        function openModal() {
+            var modal = document.getElementById('imageModal');
+            var modalImg = document.getElementById('zoomedImage');
+            var imgElement = document.querySelector('.intern-image');
+            
+            if (imgElement && imgElement.src) {
+                modal.style.display = 'flex';
+                modalImg.src = imgElement.src;
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Close with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
