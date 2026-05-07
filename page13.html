@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 13 - Thank You</title>
+    <title>Slide 3 - Host Organization</title>
     <style>
         * {
             margin: 0;
@@ -23,21 +23,30 @@
         }
 
         .slide-container {
-            max-width: 1300px;
-            width: 95%;
+            max-width: 1200px;
+            width: 90%;
             margin: 40px auto;
             padding: 40px;
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            text-align: center;
         }
 
         .header-row {
             display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            border-left: 4px solid #A5D6A5;
+            padding-left: 20px;
+            margin: 0;
         }
 
         .nav-buttons {
@@ -61,303 +70,322 @@
             background: rgba(165,214,165,0.6);
         }
 
-        /* Gallery Grid for Images */
-        .gallery-top {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .gallery-bottom {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .gallery-middle {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .gallery-img {
-            width: 140px;
-            height: 140px;
-            object-fit: cover;
+        .info-card {
+            background: rgba(165,214,165,0.15);
+            padding: 20px;
             border-radius: 15px;
-            border: 3px solid rgba(165,214,165,0.5);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            cursor: pointer;
-            transition: transform 0.3s ease, border-color 0.3s;
+            margin-bottom: 20px;
+            border: 1px solid rgba(165,214,165,0.3);
         }
 
-        .gallery-img:hover {
-            transform: scale(1.08);
-            border-color: #C8E6A0;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        .info-card p {
+            margin: 8px 0;
         }
 
-        /* Larger images for featured spots */
-        .gallery-img-large {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 20px;
-            border: 3px solid rgba(165,214,165,0.5);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            cursor: pointer;
-            transition: transform 0.3s ease, border-color 0.3s;
-        }
-
-        .gallery-img-large:hover {
-            transform: scale(1.08);
-            border-color: #C8E6A0;
-        }
-
-        /* Profile photo (center piece) */
-        .profile-photo {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #A5D6A5;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            cursor: pointer;
-            transition: transform 0.3s;
-            margin: 0 20px;
-        }
-
-        .profile-photo:hover {
-            transform: scale(1.05);
-        }
-
-        h1 {
-            font-size: 4rem;
+        .logo-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
             margin: 20px 0;
-            animation: pulse 1.5s ease infinite;
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            width: 200px;
+            height: 150px;
+            background: rgba(165,214,165,0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed #A5D6A5;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.02);
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .branch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .branch {
+            background: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .branch:hover {
+            transform: translateY(-5px);
+            background: rgba(165,214,165,0.25);
+        }
+
+        .branch h3 {
+            margin-bottom: 10px;
             color: #C8E6A0;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .branch-detail {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            display: none;
+            color: #ddd;
         }
 
-        .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+        .branch.active .branch-detail {
+            display: block;
+        }
+
+        .branch-image {
+            width: 100%;
+            height: 130px;
+            background: rgba(165,214,165,0.1);
+            margin-top: 12px;
+            border-radius: 8px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .branch-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .branch-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .branch.active .branch-image {
+            display: flex;
+        }
+
+        /* Modal for image zoom */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-modal.show {
+            display: flex;
+        }
+
+        .image-modal img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 10000;
+        }
+
+        .modal-close:hover {
             color: #A5D6A5;
         }
 
-        .question {
-            font-size: 1.3rem;
-            margin: 25px 0;
-            font-weight: bold;
-        }
-
-        .celebrate-btn {
-            background: #A5D6A5;
-            color: #0B3B24;
-            border: none;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: transform 0.3s;
-            margin: 15px 0;
-        }
-
-        .celebrate-btn:hover {
-            transform: scale(1.05);
-            background: #C8E6A0;
-        }
-
         .page-indicator {
-            margin-top: 20px;
+            margin-top: 30px;
             text-align: center;
             font-size: 0.9rem;
             opacity: 0.7;
         }
 
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        .caption {
-            font-size: 0.7rem;
-            margin-top: 5px;
+        .click-hint {
+            text-align: center;
+            font-size: 0.8rem;
+            margin-top: 10px;
             opacity: 0.7;
         }
 
-        /* Modal Lightbox for Zoom */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.95);
-            backdrop-filter: blur(8px);
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            max-width: 85%;
-            max-height: 85%;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: white;
-            font-size: 45px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .close-modal:hover {
-            color: #A5D6A5;
-        }
-
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .subtitle { font-size: 1rem; }
-            .gallery-img { width: 90px; height: 90px; }
-            .gallery-img-large { width: 120px; height: 120px; }
-            .profile-photo { width: 80px; height: 80px; }
+            .header-row {
+                flex-direction: column;
+                text-align: center;
+            }
+            h1 {
+                border-left: none;
+                padding-left: 0;
+                border-bottom: 2px solid #A5D6A5;
+                padding-bottom: 10px;
+                font-size: 1.8rem;
+            }
+            .logo-container {
+                width: 150px;
+                height: 120px;
+            }
         }
     </style>
 </head>
 <body>
-    <canvas id="confettiCanvas"></canvas>
-    
     <div class="slide-container">
         <div class="header-row">
+            <h1>🏢 Host Organization</h1>
             <div class="nav-buttons">
-                <a href="page12.html" class="nav-btn">← Previous</a>
+                <a href="page2.html" class="nav-btn">← Previous</a>
+                <a href="page4.html" class="nav-btn">Next →</a>
+            </div>
+        </div>
+        
+        <div class="info-card">
+            <p><strong>🌿 MEMBER OF THE ROSE GROUP</strong></p>
+            <p>🏢 HEADQUARTERS IN BELIZE CITY</p>
+            <p>📍 BRANCHES IN BELMOPAN, SAN PEDRO & STANN CREEK</p>
+            <p>💻 RELIES ON CENTRALIZED IT FOR DAILY OPERATIONS</p>
+            <p>👨‍💼 REPORTED TO MR. ESTEVAN GONZALEZ (IT LIAISON)</p>
+        </div>
+
+        <div class="logo-row">
+            <div class="logo-container" onclick="zoomImage('images/roe-group-logo.png')">
+                <img src="images/roe-group-logo.png" alt="Rose Group Logo" onerror="this.parentElement.innerHTML='<span style=color:#A5D6A5;>🌿 Rose Group Logo</span>'">
+            </div>
+            <div class="logo-container" onclick="zoomImage('images/20.jpeg')">
+                <img src="images/20.jpeg" alt="Madisco Logo" onerror="this.parentElement.innerHTML='<span style=color:#A5D6A5;>🏢 Madisco Logo</span>'">
             </div>
         </div>
 
-        <!-- TOP ROW: 2-3 images -->
-        <div class="gallery-top">
-            <img src="images/madisco belmopan.jpg" alt="Computer setup" class="gallery-img" onclick="openModal(this.src)" onerror="this.style.display='none'">
-            <img src="images/madisco-san-pedro.jpg" alt="Network cabling work" class="gallery-img" onclick="openModal(this.src)" onerror="this.style.display='none'">
-            <img src="images/madisco-south.jpg" alt="Camera installation" class="gallery-img" onclick="openModal(this.src)" onerror="this.style.display='none'">
-        </div>
-
-        <!-- MIDDLE SECTION: Profile + Thank You -->
-        <div class="gallery-middle">
-            <img src="images/1.jpeg" alt="Branch travel" class="gallery-img-large" onclick="openModal(this.src)" onerror="this.style.display='none'">
+        <h3 style="margin: 20px 0 10px 0;">📍 Click on any branch to see details:</h3>
+        
+        <div class="branch-grid">
+            <div class="branch" onclick="toggleBranch(this)">
+                <h3>🏙️ Belize City</h3>
+                <div class="branch-detail">
+                    🏢 Headquarters<br>
+                    💻 Main IT Server Room<br>
+                    👨‍💼 Central Support Team
+                </div>
+                <div class="branch-image" onclick="event.stopPropagation(); zoomImage('images/madisco-belize.jpg')">
+                    <img src="images/madisco-belize.jpg" alt="Belize City Branch" onerror="this.parentElement.innerHTML='📸 Click to view (add image)'">
+                </div>
+            </div>
             
-            <img src="images/Madisco logo.png" alt="Marlon Pelayo" class="profile-photo" onclick="openModal(this.src)" onerror="this.style.display='none'">
+            <div class="branch" onclick="toggleBranch(this)">
+                <h3>🏛️ Belmopan</h3>
+                <div class="branch-detail">
+                    🏛️ Capital Branch<br>
+                    🤝 Government Liaison Office<br>
+                    📍 Location: Ring Road
+                </div>
+                <div class="branch-image" onclick="event.stopPropagation(); zoomImage('images/madisco-belmopan.jpg')">
+                    <img src="images/madisco-belmopan.jpg" alt="Belmopan Branch" onerror="this.parentElement.innerHTML='📸 Click to view (add image)'">
+                </div>
+            </div>
             
-            <img src="images/Boos.png" alt="Warehouse IT work" class="gallery-img-large" onclick="openModal(this.src)" onerror="this.style.display='none'">
+            <div class="branch" onclick="toggleBranch(this)">
+                <h3>🏝️ San Pedro</h3>
+                <div class="branch-detail">
+                    🏝️ Island Branch<br>
+                    🔧 Rewiring completed Week 8<br>
+                    📍 Location: Barrier Reef Drive
+                </div>
+                <div class="branch-image" onclick="event.stopPropagation(); zoomImage('images/madisco-san-pedro.jpg')">
+                    <img src="images/madisco-san-pedro.jpg" alt="San Pedro Branch" onerror="this.parentElement.innerHTML='📸 Click to view (add image)'">
+                </div>
+            </div>
+            
+            <div class="branch" onclick="toggleBranch(this)">
+                <h3>🌊 Stann Creek</h3>
+                <div class="branch-detail">
+                    🌊 Coastal Branch<br>
+                    📡 Remote support hub<br>
+                    📍 Location: Dangriga
+                </div>
+                <div class="branch-image" onclick="event.stopPropagation(); zoomImage('images/madisco-stann-creek.jpg')">
+                    <img src="images/madisco-stann-creek.jpg" alt="Stann Creek Branch" onerror="this.parentElement.innerHTML='📸 Click to view (add image)'">
+                </div>
+            </div>
         </div>
-
-        <h1>Thank You</h1>
-        <div class="subtitle">IT Support Internship at Madisco Company Ltd.</div>
-
-        <!-- BOTTOM ROW: 2-3 images -->
-        <div class="gallery-bottom">
-            <img src="images/101.jpeg" alt="User support" class="gallery-img" onclick="openModal(this.src)" onerror="this.style.display='none'">
-            <img src="images/intern-work.png" alt="Madisco team" class="gallery-img" onclick="openModal(this.src)" onerror="this.style.display='none'">
-            <img src="images/100.jpeg" alt="Documentation work" class="gallery-img" onclick="openModal(this.src)" onerror="this.style.display='none'">
+        
+        <div class="click-hint">
+            💡 Click on any branch card to expand → Click the image area to zoom in
         </div>
+    </div>
 
-        <div class="question">Any Questions?</div>
-        <button class="celebrate-btn" onclick="startConfetti()">🎉 Celebrate! 🎉</button>
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal" onclick="closeZoom()">
+        <span class="modal-close" onclick="closeZoom()">&times;</span>
+        <img id="modalImage" src="" alt="Zoomed Image">
     </div>
     
-    <div class="page-indicator">Page 13 of 13</div>
-
-    <!-- Lightbox Modal -->
-    <div id="imageModal" class="modal" onclick="closeModal()">
-        <span class="close-modal">&times;</span>
-        <img class="modal-content" id="zoomedImage">
-    </div>
+    <div class="page-indicator">Page 3 of 13</div>
 
     <script>
-        function openModal(src) {
+        function toggleBranch(element) {
+            // Close other open branches
+            const allBranches = document.querySelectorAll('.branch');
+            allBranches.forEach(function(branch) {
+                if (branch !== element && branch.classList.contains('active')) {
+                    branch.classList.remove('active');
+                }
+            });
+            // Toggle current branch
+            element.classList.toggle('active');
+        }
+
+        function zoomImage(imageSrc) {
+            if (imageSrc) {
+                var modal = document.getElementById('imageModal');
+                var modalImg = document.getElementById('modalImage');
+                
+                modalImg.src = imageSrc;
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            } else {
+                alert('Image not available yet. Please add the image file.');
+            }
+        }
+
+        function closeZoom() {
             var modal = document.getElementById('imageModal');
-            var modalImg = document.getElementById('zoomedImage');
-            modal.style.display = 'flex';
-            modalImg.src = src;
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
         }
 
-        function closeModal() {
-            document.getElementById('imageModal').style.display = 'none';
-        }
-
-        // Close with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeZoom();
             }
         });
-
-        function startConfetti() {
-            var canvas = document.getElementById('confettiCanvas');
-            var ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            
-            var particles = [];
-            for (var i = 0; i < 200; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height - canvas.height,
-                    size: Math.random() * 8 + 3,
-                    speedY: Math.random() * 6 + 3,
-                    speedX: (Math.random() - 0.5) * 3,
-                    color: 'hsl(' + (Math.random() * 360) + ', 70%, 60%)'
-                });
-            }
-            
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                var active = false;
-                
-                particles.forEach(function(p) {
-                    p.y += p.speedY;
-                    p.x += p.speedX;
-                    if (p.y < canvas.height) active = true;
-                    if (p.y > canvas.height) p.y = -20;
-                    if (p.x > canvas.width) p.x = 0;
-                    if (p.x < 0) p.x = canvas.width;
-                    
-                    ctx.fillStyle = p.color;
-                    ctx.fillRect(p.x, p.y, p.size, p.size);
-                });
-                
-                if (active) requestAnimationFrame(animate);
-            }
-            
-            animate();
-            setTimeout(function() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-            }, 5000);
-        }
     </script>
 </body>
 </html>
