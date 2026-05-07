@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 12 - Skills Gained</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0B3B24 0%, #1A5D3A 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .slide-container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            border-left: 4px solid #A5D6A5;
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: rgba(165,214,165,0.3);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-btn:hover {
+            background: rgba(165,214,165,0.6);
+        }
+
+        .skill-bar-container {
+            margin: 40px 0;
+        }
+
+        .skill {
+            margin-bottom: 25px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            height: 25px;
+        }
+
+        .progress {
+            background: linear-gradient(90deg, #A5D6A5, #C8E6A0);
+            width: 0%;
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1.5s ease-out;
+        }
+
+        .page-indicator {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .header-row {
+                flex-direction: column;
+                text-align: center;
+            }
+            h1 {
+                border-left: none;
+                padding-left: 0;
+                border-bottom: 2px solid #A5D6A5;
+                padding-bottom: 10px;
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-row">
+            <h1>📈 Skills Gained</h1>
+            <div class="nav-buttons">
+                <a href="page11.html" class="nav-btn">← Previous</a>
+                <a href="page13.html" class="nav-btn">Next →</a>
+            </div>
+        </div>
+        
+        <div class="skill-bar-container">
+            <div class="skill">
+                <div class="skill-header">
+                    <span>🔧 Problem-Solving</span>
+                    <span id="skill1Val">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="skill1"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span>💬 Communication</span>
+                    <span id="skill2Val">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="skill2"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span>🖥️ Technical Skills (Hardware & Networking)</span>
+                    <span id="skill3Val">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="skill3"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-header">
+                    <span>🤝 Teamwork & Adaptability</span>
+                    <span id="skill4Val">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="skill4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-indicator">Page 12 of 13</div>
+
+    <script>
+        function animateSkills() {
+            var skills = [
+                { id: 'skill1', valId: 'skill1Val', target: 90 },
+                { id: 'skill2', valId: 'skill2Val', target: 85 },
+                { id: 'skill3', valId: 'skill3Val', target: 88 },
+                { id: 'skill4', valId: 'skill4Val', target: 92 }
+            ];
+            
+            skills.forEach(function(skill) {
+                var progressBar = document.getElementById(skill.id);
+                var valSpan = document.getElementById(skill.valId);
+                var current = 0;
+                var interval = setInterval(function() {
+                    if (current >= skill.target) {
+                        clearInterval(interval);
+                    } else {
+                        current++;
+                        progressBar.style.width = current + '%';
+                        valSpan.innerText = current + '%';
+                    }
+                }, 15);
+            });
+        }
+        
+        window.onload = animateSkills;
+    </script>
+</body>
+</html>

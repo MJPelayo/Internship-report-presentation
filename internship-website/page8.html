@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 8 - Ethernet & Cabling</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0B3B24 0%, #1A5D3A 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .slide-container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            border-left: 4px solid #A5D6A5;
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: rgba(165,214,165,0.3);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-btn:hover {
+            background: rgba(165,214,165,0.6);
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .skill-item {
+            background: rgba(165,214,165,0.15);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(165,214,165,0.3);
+        }
+
+        .comparison-container {
+            margin: 40px 0;
+        }
+
+        .comparison-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #C8E6A0;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .before-after {
+            position: relative;
+            width: 100%;
+            padding-bottom: 60%;
+        }
+
+        .before-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(165,214,165,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            border: 1px dashed #A5D6A5;
+        }
+
+        .after-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: rgba(165,214,165,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            border-right: 3px solid #A5D6A5;
+            overflow: hidden;
+        }
+
+        .after-img img, .before-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: #A5D6A5;
+            cursor: ew-resize;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .page-indicator {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .header-row {
+                flex-direction: column;
+                text-align: center;
+            }
+            h1 {
+                border-left: none;
+                padding-left: 0;
+                border-bottom: 2px solid #A5D6A5;
+                padding-bottom: 10px;
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-row">
+            <h1>🔌 Ethernet Cabling & Networking</h1>
+            <div class="nav-buttons">
+                <a href="page7.html" class="nav-btn">← Previous</a>
+                <a href="page9.html" class="nav-btn">Next →</a>
+            </div>
+        </div>
+
+        <div class="skills-list">
+            <div class="skill-item">🔌 Ethernet Cabling</div>
+            <div class="skill-item">📡 Cable Tracing & Testing</div>
+            <div class="skill-item">🔧 Rewiring (San Pedro & Warehouse)</div>
+            <div class="skill-item">🔄 Switch & IP Phone Setup</div>
+        </div>
+
+        <div class="comparison-container">
+            <div class="comparison-title">← Before → After (Drag the slider)</div>
+            <div class="slider-container" id="sliderContainer">
+                <div class="before-after">
+                    <div class="before-img" id="beforeImg">
+                        <img src="images/cabling-before.jpg" alt="Before" id="beforeImgTag" onerror="this.parentElement.innerHTML='[Before: Messy Cables]'">
+                    </div>
+                    <div class="after-img" id="afterImg" style="width: 50%;">
+                        <img src="images/cabling-after.jpg" alt="After" id="afterImgTag" onerror="this.parentElement.innerHTML='[After: Organized]'">
+                    </div>
+                    <div class="slider-handle" id="sliderHandle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-indicator">Page 8 of 13</div>
+
+    <script>
+        var slider = document.getElementById('sliderContainer');
+        var afterImg = document.getElementById('afterImg');
+        var handle = document.getElementById('sliderHandle');
+
+        var isDragging = false;
+
+        function updateSlider(e) {
+            var rect = slider.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            if (x < 0) x = 0;
+            if (x > rect.width) x = rect.width;
+            var percent = (x / rect.width) * 100;
+            afterImg.style.width = percent + '%';
+            handle.style.left = percent + '%';
+        }
+
+        handle.addEventListener('mousedown', function() { isDragging = true; });
+        window.addEventListener('mousemove', function(e) { if (isDragging) updateSlider(e); });
+        window.addEventListener('mouseup', function() { isDragging = false; });
+        slider.addEventListener('mousemove', function(e) { if (isDragging) updateSlider(e); });
+    </script>
+</body>
+</html>
